@@ -102,7 +102,7 @@ AcctGatherNodeFreq={{ slurm_AcctGatherNodeFreq }}
 AccountingStorageType={{ slurm_accounting_storage_type }}
 AccountingStorageHost={{ slurm_accounting_storage_host }}
 {% if slurm_major_version|int < 21 %}
-AccountingStorageLoc={{ slurm_accounting_storage_loc }}
+# AccountingStorageLoc={{ slurm_accounting_storage_loc }}
 {% else %}
 AccountingStoreFlags={{ slurm_accounting_store_flags }}
 {% endif %}

@@ -1,14 +1,14 @@
 ---
 
-  - name: Remove FGI slurm repo if it still exists somewhere
-    file:
-      path: "/etc/yum.repos.d/fgislurm.repo"
-      state: absent
+#  - name: Remove FGI slurm repo if it still exists somewhere
+#    file:
+#      path: "/etc/yum.repos.d/fgislurm.repo"
+#      state: absent
 
-  - name: Install FGCI repo for extra packages like slurm-ohpc-fgci-addons
-    package:
-      pkg: http://idris.fgi.csc.fi/fgci7/x86_64/fgci/rpms/fgci-release7-1-1.el7.noarch.rpm
-    when: ansible_distribution_major_version == "7" and slurm_repo == 'ohpc' and ansible_os_family == "RedHat"
+#  - name: Install FGCI repo for extra packages like slurm-ohpc-fgci-addons
+#    package:
+#      pkg: http://idris.fgi.csc.fi/fgci7/x86_64/fgci/rpms/fgci-release7-1-1.el7.noarch.rpm
+#    when: ansible_distribution_major_version == "7" and slurm_repo == 'ohpc' and ansible_os_family == "RedHat"
 
 ##
     # Set slurm user and group locally on every host if uid/gid given

@@ -8,6 +8,7 @@ slurm_packages:
  - slurm-torque
  - slurm-munge
  - slurm-contribs
+ - slurm-torque
 
 slurm_service_packages:
  - lua-devel

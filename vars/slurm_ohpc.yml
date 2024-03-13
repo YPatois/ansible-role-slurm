@@ -2,22 +2,22 @@
 
 slurm_packages:
   - yum-plugin-versionlock
-  - slurm-ohpc
-  - slurm-libpmi-ohpc
+#  - slurm-ohpc
+#  - slurm-libpmi-ohpc
   - xorg-x11-xauth
-  - slurm-ohpc-fgci-addons
-  - slurm-contribs-ohpc
+#  - slurm-ohpc-fgci-addons
+#  - slurm-contribs-ohpc
 
 slurm_service_packages:
  - lua-devel
  - mailx
- - slurm-devel-ohpc
- - slurm-ohpc
- - slurm-perlapi-ohpc
- - slurm-slurmctld-ohpc
+# - slurm-devel-ohpc
+# - slurm-ohpc
+# - slurm-perlapi-ohpc
+# - slurm-slurmctld-ohpc
 
 slurm_compute_packages:
- - ohpc-slurm-client
+# - ohpc-slurm-client
 
 slurm_conf_version_specific_params_list:
  - "SlurmctldSyslogDebug={{ slurm_slurmctld_syslog_debug }}"
@@ -26,10 +26,11 @@ slurm_conf_version_specific_params_list:
 slurm_slurmdbd_conf_version_specific_params_list:
  - "DebugLevelSyslog={{ slurm_slurmdbd_syslog_debug }}"
 
-slurm_cgroup_constrain_kmem_space: "no" # Workaround for Linux kernel bug, see slurm bug #5082
+# YP: likely fixed in recent kernels (see Red Hat Bugzilla – Bug 1507149)
+#slurm_cgroup_constrain_kmem_space: "no" # Workaround for Linux kernel bug, see slurm bug #5082
 
 slurm_ohpc_versionlock_list:
-  - 'slurm-ohpc'
-  - 'slurm-*-ohpc'
-  - 'ohpc-slurm-*'
-  - 'munge*ohpc'
+#  - 'slurm-ohpc'
+#  - 'slurm-*-ohpc'
+#  - 'ohpc-slurm-*'
+#  - 'munge*ohpc'

@@ -15,4 +15,4 @@ slurmdbd_packages_ohpc_repo:
  - "mariadb-server"
  - "mariadb-devel"
  - "MySQL-python"
- - "slurm-slurmdbd-ohpc"
+# - "slurm-slurmdbd-ohpc"

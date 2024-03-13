@@ -1,4 +1,4 @@
 ---
-
+slurm_sql_service: "INVALID"
 slurmd_service: "slurmd.service"
 slurmctld_service: "slurmctld.service"

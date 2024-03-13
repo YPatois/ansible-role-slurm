@@ -18,8 +18,8 @@ slurm_manage_mysql_security: True
 nis_server: False
 
 # option to manually force slurm_user_uid regardless of nis server
-#slurm_user_uid: 5004
-#slurm_user_gid: 5004
+slurm_user_uid: 5004
+slurm_user_gid: 5004
 
 slurm_repo: "ohpc"  # Or "ohpc" to use OHPC slurm packages
 slurm_ohpc_versionlock: True
