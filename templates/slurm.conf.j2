@@ -72,7 +72,7 @@ SchedulerType={{ slurm_SchedulerType }}
 SchedulerParameters={{ slurm_scheduler_parameters }}
 SelectType={{ slurm_select_type }}
 SelectTypeParameters={{ slurm_select_type_parameters }}
-{% if slurm_major_version|int < 21 %}
+{% if slurm_major_version|int < 20 %}
 FastSchedule={{ slurm_fast_schedule }}
 {% endif %}
 PriorityType={{ slurm_priority_type }}
@@ -101,7 +101,7 @@ AcctGatherEnergyType={{ slurm_AcctGatherEnergyType }}
 AcctGatherNodeFreq={{ slurm_AcctGatherNodeFreq }}
 AccountingStorageType={{ slurm_accounting_storage_type }}
 AccountingStorageHost={{ slurm_accounting_storage_host }}
-{% if slurm_major_version|int < 21 %}
+{% if slurm_major_version|int < 20 %}
 # AccountingStorageLoc={{ slurm_accounting_storage_loc }}
 {% else %}
 AccountingStoreFlags={{ slurm_accounting_store_flags }}
