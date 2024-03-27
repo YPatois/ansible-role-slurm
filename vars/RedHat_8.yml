@@ -1,0 +1,21 @@
+---
+
+slurmd_service: "slurmd.service"
+slurmctld_service: "slurmctld.service"
+slurm_sql_service: "mariadb"
+slurmdbd_packages_fgci_repo:
+ - "mariadb"
+ - "mariadb-server"
+ - "mariadb-devel"
+ - "MySQL-python"
+ - "slurm-slurmdbd"
+
+slurmdbd_packages_ohpc_repo:
+ - "munge"
+ - "mariadb"
+ - "mariadb-server"
+ - "mariadb-devel"
+ - "python3-PyMySQL"
+ - "slurm-slurmdbd"
+ - "slurm-slurmctld"
+# - "slurm-slurmdbd-ohpc"
