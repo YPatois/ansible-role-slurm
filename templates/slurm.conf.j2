@@ -73,7 +73,7 @@ SchedulerParameters={{ slurm_scheduler_parameters }}
 SelectType={{ slurm_select_type }}
 SelectTypeParameters={{ slurm_select_type_parameters }}
 {% if slurm_major_version|int < 20 %}
-FastSchedule={{ slurm_fast_schedule }}
+# FastSchedule={{ slurm_fast_schedule }} # FIXME: Obsolete command
 {% endif %}
 PriorityType={{ slurm_priority_type }}
 {% if slurm_priority_type == "priority/multifactor" %}
