@@ -1,21 +1,48 @@
 ---
 
+slurm_packages:
+ - slurm
+ - slurm-devel
+ - slurm-perlapi
+ - slurm-pam_slurm
+ - slurm-torque
+ - slurm-contribs
+ - slurm-slurmd  # FIXME: switch to slurm-slurmrestd
+# - munge
+
+slurm_service_packages:
+# - lua-devel
+ - mailx
+ - slurm-slurmctld
+# - slurm-lua
+# - slurm-plugins
+# - slurm-sql
+
 slurmd_service: "slurmd.service"
 slurmctld_service: "slurmctld.service"
 slurm_sql_service: "mariadb"
-slurmdbd_packages_fgci_repo:
+
+
+slurm_compute_packages:
+ - slurm-slurmd # FIXME: switch to slurm-slurmrestd
+
+
+
+slurmdbd_packages:
  - "mariadb"
  - "mariadb-server"
  - "mariadb-devel"
- - "MySQL-python"
+# - "MySQL-python"
  - "slurm-slurmdbd"
+# - "python3-PyMySQL"
 
 slurmdbd_packages_ohpc_repo:
- - "munge"
- - "mariadb"
- - "mariadb-server"
- - "mariadb-devel"
- - "python3-PyMySQL"
- - "slurm-slurmdbd"
- - "slurm-slurmctld"
+# - "munge"
+# - "mariadb"
+# - "mariadb-server"
+# - "mariadb-devel"
+# - "python3-PyMySQL"
+# - "slurm-slurmdbd"
+# - "slurm-slurmctld"
 # - "slurm-slurmdbd-ohpc"
+  - coreutils # FIXME
