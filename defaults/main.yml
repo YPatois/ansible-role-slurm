@@ -21,11 +21,12 @@ nis_server: False
 slurm_user_uid: 5004
 slurm_user_gid: 5004
 
-slurm_repo: "ohpc"  # Or "ohpc" to use OHPC slurm packages
-slurm_ohpc_versionlock: True
-siteName: "io"
-nodeBase: "{{ siteName }}"
-nodeGpuBase: "gpu"
+#slurm_repo: "ohpc"  # Or "ohpc" to use OHPC slurm packages
+#slurm_ohpc_versionlock: True
+siteName: "iphc"
+wnBase: "sbgwn"
+nodeBase: "{{ wnBase }}"
+#nodeGpuBase: "gpu"
 
 # this role has been written to support slurm >=18.08. Some conf parameters have been deprecated from newer Slurm versions so this is for backward compatibility
 slurm_major_version: 18
@@ -40,12 +41,12 @@ slurm_systemd_override_sec: "20"
 # By setting slurm_munge_key_from_nfs to True we copy the munge.key from slurm_munge_key_nfs
 # If it's False then we copy it from files/ where ansible runs
 # This is the default. So with ansible-pull we set slurm_munge_key_nfs to True
-slurm_munge_key_from_nfs: False
+#slurm_munge_key_from_nfs: False
 
 # By default we copy the munge.key to NFS
-slurm_munge_key_to_nfs: True
-slurm_munge_key_nfs_dir: "/home/{{ admingroup }}"
-slurm_munge_key_nfs: "{{ slurm_munge_key_nfs_dir }}/munge.key"
+#slurm_munge_key_to_nfs: True
+#slurm_munge_key_nfs_dir: "/home/{{ admingroup }}"
+#"slurm_munge_key_nfs: "{{ slurm_munge_key_nfs_dir }}/munge.key"
 
 slurm_SlurmUser: "slurm"
 slurm_SlurmctldPort: "6817"
@@ -103,19 +104,19 @@ slurm_AccountingStorageTRES: "gres/gpu"
 #  - "SwitchName=s1 Nodes=c[19-36]"
 #  - "SwitchName=s3 Switches=s[0,1]"
 slurm_clustername: "{{ siteName | default('test_cluster')}}"
-slurm_compute_nodes: "{{ nodeBase }}[1-4]"
+slurm_compute_nodes: "sbgwn50.in2p3.fr"
 slurm_compute_realmemory: "126000"
 slurm_compute_sockets: "2"
 slurm_compute_corespersocket: "12"
 slurm_compute_threadspercore: "2"
 slurm_node_state: "UNKNOWN"
-slurm_with_gpu: True
-slurm_gpu_nodes: "{{ nodeGpuBase }}"
-slurm_grestypes: "gpu"
-slurm_gpu_type: "teslak80"
-slurm_gpu_count: "8"
+slurm_with_gpu: False
+#slurm_gpu_nodes: "{{ nodeGpuBase }}"
+slurm_grestypes: "toto"
+#slurm_gpu_type: "teslak80"
+#slurm_gpu_count: "8"
 slurm_greslist:
-  - "NodeName={{ nodeGpuBase }} Name=gpu Type={{ slurm_gpu_type }} File=/dev/nvidia[0-{{ slurm_gpu_count|int - 1 }}]"
+  - "NodeName={{ slurm_compute_nodes }}"
 
 # TIMERS
 slurm_SlurmctldTimeout: "300"
