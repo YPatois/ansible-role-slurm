@@ -1,36 +1,36 @@
 ---
 
-  - name: copy munge key to compute nodes when slurm_munge_key_from_nfs is False
-    copy: src=files/munge.key
-          dest=/etc/munge/munge.key
-          owner=munge
-          group=munge
-          mode=0400
-    when: slurm_munge_key_from_nfs == False
-    notify:
-     - restart munge
+#  - name: copy munge key to compute nodes when slurm_munge_key_from_nfs is False
+#    copy: src=files/munge.key
+#          dest=/etc/munge/munge.key
+#          owner=munge
+#          group=munge
+#          mode=0400
+#    when: slurm_munge_key_from_nfs == False
+#    notify:
+#     - restart munge
 
-  - name: copy the munge key from NFS when slurm_munge_key_from_nfs is True
-    command: cp -v {{ slurm_munge_key_nfs }} /etc/munge/munge.key creates=/etc/munge/munge.key
-    when: slurm_munge_key_from_nfs == True
-    notify:
-     - restart munge
+#  - name: copy the munge key from NFS when slurm_munge_key_from_nfs is True
+#    command: cp -v {{ slurm_munge_key_nfs }} /etc/munge/munge.key creates=/etc/munge/munge.key
+#    when: slurm_munge_key_from_nfs == True
+#    notify:
+#     - restart munge
 
-  - name: set permissions on the munge key from NFS
-    file: path=/etc/munge/munge.key mode=0400 owner=munge group=munge
-    when: slurm_munge_key_from_nfs == True
-    notify:
-     - restart munge
+#  - name: set permissions on the munge key from NFS
+#    file: path=/etc/munge/munge.key mode=0400 owner=munge group=munge
+#    when: slurm_munge_key_from_nfs == True
+#    notify:
+#     - restart munge
 
-  - name: start and enable munge on compute nodes
-    service: name=munge state=started enabled=yes
-    notify:
-     - restart munge
-    when: ansible_connection != 'chroot'
+#  - name: start and enable munge on compute nodes
+#    service: name=munge state=started enabled=yes
+#    notify:
+#     - restart munge
+#    when: ansible_connection != 'chroot'
 
-  - name: enable munge on compute nodes
-    command: systemctl enable munge
-    when: ansible_connection == 'chroot'
+#  - name: enable munge on compute nodes
+#    command: systemctl enable munge
+#    when: ansible_connection == 'chroot'
 
   - name: install slurmd packages
     package: name="{{ slurm_compute_packages }}" state=present
