@@ -18,6 +18,7 @@ slurm_service_packages:
 
 slurm_compute_packages:
 # - ohpc-slurm-client
+  - coreutils # FIXME
 
 slurm_conf_version_specific_params_list:
  - "SlurmctldSyslogDebug={{ slurm_slurmctld_syslog_debug }}"
@@ -34,3 +35,4 @@ slurm_ohpc_versionlock_list:
 #  - 'slurm-*-ohpc'
 #  - 'ohpc-slurm-*'
 #  - 'munge*ohpc'
+  - coreutils # FIXME
