@@ -14,8 +14,8 @@
   # check which version of slurm is installed
 - include_tasks: version.yml
 
-- include_vars: slurm_ohpc.yml
-  when: slurm_repo == 'ohpc'
+#- include_vars: slurm_ohpc.yml
+#  when: slurm_repo == 'ohpc'
 
   # common.yml is applied to all nodes
     # configure pam
