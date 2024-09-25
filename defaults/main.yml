@@ -23,13 +23,13 @@ slurm_user_gid: 5004
 
 #slurm_repo: "ohpc"  # Or "ohpc" to use OHPC slurm packages
 #slurm_ohpc_versionlock: True
-siteName: "iphc"
-wnBase: "sbgwn"
+siteName: '{{ slurm_sitename | default("test_cluster") }}'
+wnBase: '{{ slurm_wn_base | default("mywn") }}'
 nodeBase: "{{ wnBase }}"
 #nodeGpuBase: "gpu"
 
 # this role has been written to support slurm >=18.08. Some conf parameters have been deprecated from newer Slurm versions so this is for backward compatibility
-slurm_major_version: 18
+slurm_major_version: 22
 
 # Have systemd restart slurm daemons if they fail to start
 slurm_systemd_override_slurmd: True
