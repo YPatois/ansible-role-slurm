@@ -22,6 +22,7 @@ BackupAddr={{ slurm_backup_addr }}
 SlurmUser={{ slurm_SlurmUser }}
 SlurmctldPort={{ slurm_SlurmctldPort }}
 SlurmdPort={{ slurm_SlurmdPort }}
+SrunPortRange=60001-63000
 AuthType={{ slurm_AuthType }}
 StateSaveLocation={{ slurm_state_dir }}
 SwitchType={{ slurm_switch_type }}
@@ -42,8 +43,8 @@ EnforcePartLimits={{ slurm_enforce_part_limits }}
 {% if slurm_jobsubmitplugins is defined %}
 JobSubmitPlugins={{ slurm_jobsubmitplugins }}
 {% endif %}
-Epilog={{ slurm_Epilog }}
-TaskEpilog={{ slurm_TaskEpilog  }}
+# Epilog={{ slurm_Epilog }} # FIXME: there should be Some
+# TaskEpilog={{ slurm_TaskEpilog  }} # FIXME: idem
 TaskPlugin={{ slurm_TaskPlugin }}
 UsePAM={{ slurm_usepam }}
 RebootProgram={{ slurm_RebootProgram }}
