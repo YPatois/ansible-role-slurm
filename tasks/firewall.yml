@@ -1,0 +1,26 @@
+---
+
+# tasks file for firewall
+# FIXME: only for firewalld.
+# FIXME: split between service and compute
+
+# Service
+- firewalld:
+    port: 6817/tcp
+    permanent: yes
+    state: enabled
+    immediate: yes
+
+# Compute
+- firewalld:
+    port: 6818/tcp
+    permanent: yes
+    state: enabled
+    immediate: yes
+
+# srun range from 60001-63000
+- firewalld:
+    port: 60001-63000/tcp
+    permanent: yes
+    state: enabled
+    immediate: yes
