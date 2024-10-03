@@ -96,6 +96,7 @@ JobCompLoc={{ slurm_JobCompLoc }}
 JobCompType={{ slurm_JobCompType }}
 
 # ACCOUNTING
+{% if 1 > 0 %} # FIXME removing accounting
 JobAcctGatherType={{ slurm_JobAcctGatherType }}
 JobAcctGatherFrequency={{ slurm_JobAcctGatherFrequency }}
 AcctGatherEnergyType={{ slurm_AcctGatherEnergyType }}
@@ -113,6 +114,7 @@ AccountingStorageEnforce={{ slurm_accounting_storage_enforce }}
 AccountingStorageTRES={{ slurm_accounting_storage_tres }}
 {% elif slurm_with_gpu %}
 AccountingStorageTRES={{ slurm_AccountingStorageTRES }}
+{% endif %}
 {% endif %}
 
 # TOPOLOGY
