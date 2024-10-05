@@ -1,7 +1,7 @@
 ---
 # tasks file for ansible-role-slurm
 
-- include_tasks: firewall.yml
+#- include_tasks: firewall.yml
 
 - include_tasks: redhat.yml
   when: ansible_os_family == "RedHat"
