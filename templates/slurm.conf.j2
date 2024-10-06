@@ -96,7 +96,7 @@ JobCompLoc={{ slurm_JobCompLoc }}
 JobCompType={{ slurm_JobCompType }}
 
 # ACCOUNTING
-{% if 1 > 0 %} # FIXME removing accounting
+{% if 1|int < 0 %} # FIXME removing accounting
 JobAcctGatherType={{ slurm_JobAcctGatherType }}
 JobAcctGatherFrequency={{ slurm_JobAcctGatherFrequency }}
 AcctGatherEnergyType={{ slurm_AcctGatherEnergyType }}

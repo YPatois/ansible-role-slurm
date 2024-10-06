@@ -46,7 +46,8 @@
     check_mode: no
     changed_when: False
 
-  - name: sacctmgr add cluster to accounting if it is not added already
-    command: "sacctmgr -i add cluster {{ siteName }} "
-    when: slurm_clusterlist.stdout.find("FOUND") == -1
+  # FIXME: no acounting
+  #- name: sacctmgr add cluster to accounting if it is not added already
+  #  command: "sacctmgr -i add cluster {{ siteName }} "
+  #  when: slurm_clusterlist.stdout.find("FOUND") == -1
 
