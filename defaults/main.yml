@@ -211,9 +211,10 @@ slurm_sysctl_tcp_max_syn_backlog: "4096" # 512 is the default in el7
 # - "NodeName=cn[1-1234] RealMemory=128000 Feature=haswell"
 # - "NodeName=gpu[1-1234] RealMemory=128000 Feature=haswell"
 
-#slurm_partitionlist:
+slurm_partitionlist:
 # - "PartitionName=batch Nodes={{ slurm_compute_nodes }} Default=NO MaxTime=INFINITE State=UP DefaultTime=2:00:00"
 # - "PartitionName=grid Nodes=gpu[1-1234] Default=NO MaxTime={{ slurm_max_job_time }} State=UP DefaultTime=2:00:00"
+  - "PartitionName=vo.sbg.in2p3.fr Nodes={{ slurm_compute_nodes }} Default=NO MaxTime={{ slurm_max_job_time }} State=UP DefaultTime=2:00:00"
 
 # To add extra parameters, uncomment the following line and the desired parameter's lines. Add any other absent but needed parameter to the list slurm_ExtraParamsList. Entries in the list needs to be in Setting=value like below.
 #slurm_ExtraParamsList:
