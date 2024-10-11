@@ -1,6 +1,34 @@
 ---
 # tasks file for ansible-role-slurm
 
+# FIXME: we just copied the file
+# Common variables
+- name: Get supported VOs info
+  include_vars:
+    file: 'vars/supported_vos.yaml'
+
+# debug print slurm_partitionlist
+- name: debug print slurm_partitionlist
+  debug:
+    msg: "{{ slurm_partitionlist }}"
+
+# Reset slurm_partitionlist: seems it *must* have a default partition
+- name: Reset slurm_partitionlist
+  set_fact:
+    slurm_partitionlist: ["PartitionName=normal Nodes={{ slurm_compute_nodes }} Default=YES MaxTime={{ slurm_max_job_time }} State=UP DefaultTime={{ slurm_job_def_time }}"]
+
+# Generation of slurm queues from supported_vos.yaml
+- name: Generate slurm queues
+  set_fact:
+    slurm_partitionlist: "{{ slurm_partitionlist + [ 'PartitionName=' + item + ' Nodes='+slurm_compute_nodes+' Default=NO MaxTime=' + slurm_max_job_time + ' State=UP DefaultTime=2:00:00' ] }}"
+  loop: "{{ supported_vos }}"
+# 'PartitionName={{ vo }} Nodes={{ slurm_compute_nodes }} Default=NO MaxTime={{ slurm_max_job_time }} State=UP DefaultTime=2:00:00'
+
+# debug print slurm_partitionlist
+- name: debug print slurm_partitionlist after
+  debug:
+    msg: "{{ slurm_partitionlist }}"
+
 #- include_tasks: firewall.yml
 
 - include_tasks: redhat.yml
