@@ -211,6 +211,11 @@ slurm_sysctl_tcp_max_syn_backlog: "4096" # 512 is the default in el7
 # - "NodeName=cn[1-1234] RealMemory=128000 Feature=haswell"
 # - "NodeName=gpu[1-1234] RealMemory=128000 Feature=haswell"
 
+# FIXME: working here for now, should likely be elsewhere
+list_of_wns: "{{ groups['grid_wn'] }}"
+
+
+
 slurm_partitionlist:
 # - "PartitionName=batch Nodes={{ slurm_compute_nodes }} Default=NO MaxTime=INFINITE State=UP DefaultTime=2:00:00"
 # - "PartitionName=grid Nodes=gpu[1-1234] Default=NO MaxTime={{ slurm_max_job_time }} State=UP DefaultTime=2:00:00"
