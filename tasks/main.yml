@@ -1,6 +1,26 @@
 ---
 # tasks file for ansible-role-slurm
 
+# debug print list_of_wns
+- name: debug print list_of_wns
+  debug:
+    msg: "{{ list_of_wns }}"
+
+- name: Set empty slurm_compute_nodes
+  set_fact:
+    slurm_nodelist: []
+
+ # FIXME: CoreSpecCount / MemSpecLimit / Reservations : those are more usefull, as the following values are know to slurm.
+- name: Slurm nodes list
+  set_fact:
+    slurm_nodelist: "{{ slurm_nodelist + [ { 'NodeName': item, 'CPUs': hostvars[item]['ansible_facts']['processor_vcpus'], 'RealMemory': hostvars[item]['ansible_facts']['memtotal_mb'] } ] }}"
+  loop: "{{ list_of_wns }}"
+
+# debug print slurm_nodelist
+- name: debug print slurm_nodelist
+  debug:
+    msg: "{{ slurm_nodelist }}"
+
 # FIXME: we just copied the file
 # Common variables
 - name: Get supported VOs info
@@ -28,6 +48,8 @@
 - name: debug print slurm_partitionlist after
   debug:
     msg: "{{ slurm_partitionlist }}"
+
+
 
 #- include_tasks: firewall.yml
 
