@@ -96,7 +96,6 @@ JobCompLoc={{ slurm_JobCompLoc }}
 JobCompType={{ slurm_JobCompType }}
 
 # ACCOUNTING
-{% if 1|int < 0 %} # FIXME removing accounting
 JobAcctGatherType={{ slurm_JobAcctGatherType }}
 JobAcctGatherFrequency={{ slurm_JobAcctGatherFrequency }}
 AcctGatherEnergyType={{ slurm_AcctGatherEnergyType }}
@@ -115,7 +114,6 @@ AccountingStorageTRES={{ slurm_accounting_storage_tres }}
 {% elif slurm_with_gpu %}
 AccountingStorageTRES={{ slurm_AccountingStorageTRES }}
 {% endif %}
-{% endif %}
 
 # TOPOLOGY
 {% if slurm_topology_plugin is defined %}
@@ -126,8 +124,9 @@ TopologyPlugin={{ slurm_topology_plugin }}
 
 # COMPUTE NODES
 {% if slurm_nodelist is defined %}
-{% for nodelist in slurm_nodelist %}
-{{ nodelist }}
+{% for node in slurm_nodelist %}
+{% for key, value in node.items() %}{{ key }}={{ value }} {% endfor %}
+
 {% endfor %}
 {% else %}
 NodeName={{ slurm_compute_nodes }} RealMemory={{ slurm_compute_realmemory }} Sockets={{ slurm_compute_sockets }} CoresPerSocket={{ slurm_compute_corespersocket }} ThreadsPerCore={{ slurm_compute_threadspercore }} State={{ slurm_node_state }}
