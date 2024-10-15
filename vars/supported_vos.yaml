@@ -15,12 +15,14 @@ supported_vos:
 local_vo_params:
   - name: alice
     account_prefix: ali
+    fairshare: 20
   - name: belle
     account_prefix: bel
   - name: biomed
     account_prefix: bio
   - cms:
     account_prefix: cms
+    fairshare: 80
   - name: dteam
     account_prefix: dte
   - name: ops
@@ -35,5 +37,7 @@ local_vo_params:
     account_prefix: fragri
   - name: vo.grand-est.fr
     account_prefix: gratcc
+    fairshare: 5
   - name: vo.sbg.in2p3.fr
     account_prefix: sbg
+    fairshare: 5
