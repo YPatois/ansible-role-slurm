@@ -139,7 +139,8 @@ NodeName={{ slurm_gpu_nodes }} Gres=gpu:{{ slurm_gpu_type }}:{{ slurm_gpu_count 
 # partitions
 {% if slurm_partitionlist is defined %}
 {% for partition in slurm_partitionlist %}
-{{ partition }}
+{% for key, value in partition.items() %}{{ key }}={{ value }} {% endfor %}
+
 {% endfor %}
 {% else %}
 {% if slurm_with_gpu %}
