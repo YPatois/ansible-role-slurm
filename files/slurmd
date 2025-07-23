@@ -1,0 +1,3 @@
+# Memlocks the slurmd process's memory so that if a node
+# starts swapping, the slurmd will continue to respond
+SLURMD_OPTIONS="-M"

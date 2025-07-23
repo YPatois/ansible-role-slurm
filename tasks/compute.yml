@@ -1,30 +1,33 @@
 ---
-  - name: install slurmd packages
+  - name: Install slurmd packages
     package: name="{{ slurm_compute_packages }}" state=present
     when: slurm_compute_packages is defined
 
   - name: Make sure /usr/local/libexec/slurm/epilog.d exists
     file: path=/usr/local/libexec/slurm/epilog.d state=directory owner=root group=root mode=0755 recurse=yes
 
+  - name: Copy slurmd service options file
+    copy: src=slurmd dest=/etc/sysconfig/slurmd owner=root group=root mode=0644
+
   - name: Create namespace epilog script
     template: src=namespace_clean.sh.j2 dest=/usr/local/libexec/slurm/epilog.d/namespace_clean.sh owner=root group=root mode=0755
 
-  - name: create systemd override directories for slurmd
+  - name: Create systemd override directories for slurmd
     file: path="/etc/systemd/system/slurmd.service.d" state=directory owner=root mode=0755
     when: slurm_systemd_override_slurmd and ansible_os_family == "RedHat" and ansible_distribution_major_version == "7"
 
-  - name: template in systemd override file for slurmd
+  - name: Template in systemd override file for slurmd
     template: src=systemd_override.conf.j2 dest=/etc/systemd/system/slurmd.service.d/slurmd_override.conf backup=no owner=root mode=0644
     when: slurm_systemd_override_slurmd and ansible_os_family == "RedHat" and ansible_distribution_major_version == "7"
 
-  - name: template in cgroup_allowed_devices for slurm
+  - name: Template in cgroup_allowed_devices for slurm
     template: src=cgroup_allowed_devices_file.j2 dest=/etc/slurm/cgroup_allowed_devices_file.conf owner=root mode=0644
     when: ansible_os_family == "RedHat" and ansible_distribution_major_version == "7"
 
-  - name: start and enable slurmd
+  - name: Start and enable slurmd
     service: name={{ slurmd_service }} state=started enabled=yes
     when: ansible_connection != 'chroot'
 
-  - name: enable slurmd on chroot
+  - name: Enable slurmd on chroot
     command: systemctl enable {{ slurmd_service }}
     when: ansible_connection == 'chroot'
