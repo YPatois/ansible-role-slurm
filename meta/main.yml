@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Johan Guldmyr
-  description:  Installs and configures slurm on a cluster
+  description: Installs and configures slurm on a cluster
   company: CSC - IT Center for Science Ltd.
   license: MIT
   min_ansible_version: 2.4
@@ -21,9 +21,9 @@ galaxy_info:
   #  - wheezy
   #
   galaxy_tags:
-   - clustering
-   - system
-   - batch
-   - hpc
-   - slurm
+    - clustering
+    - system
+    - batch
+    - hpc
+    - slurm
 dependencies: []

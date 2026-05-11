@@ -7,7 +7,7 @@
 # FIXME: NIS is not supported
 nis_server: False
 
-# Overwrite DB_root_password in your vars file if you want to 
+# Overwrite DB_root_password in your vars file if you want to
 # use a different password for root and slurm user
 DB_root_password: "{{ slurm_mysql_password }}"
 # Disable mysql security tasks by setting slurm_manage_mysql_security to False
@@ -54,7 +54,7 @@ slurm_mpi_params: "ports=12000-12999"
 slurm_proctrack_type: "proctrack/cgroup"
 slurm_service_node: "{{ groups['slurm_service'][0] }}"
 
-#slurm_control_addr is the same as ControlMachine ( slurm_service_node ) by default. 
+#slurm_control_addr is the same as ControlMachine ( slurm_service_node ) by default.
 #Define it here to change it.
 #slurm_control_addr="{{ slurm_service_node }}"
 # If you want a backup slurmctld, set this variable.
@@ -152,18 +152,18 @@ slurm_priority_weight_partition: "0"
 slurm_priority_weight_jobsize: "10000"
 slurm_priority_weight_qos: "10000"
 slurm_priority_maxage: "7"
-# to not have any HealthCheckProgram set slurm_healthcheck_program: "" 
+# to not have any HealthCheckProgram set slurm_healthcheck_program: ""
 slurm_healthcheck_program: "/usr/sbin/nhc"
 slurm_healthcheck_interval: "300"
 slurm_cgroup_mountpoint: "/sys/fs/cgroup"
-slurm_cgroup_automount : "no"
+slurm_cgroup_automount: "no"
 slurm_cgroup_constrain_cores: "yes"
 slurm_cgroup_constrain_ram: "no" # Use the very strict cgroup-based memory tracker?
 slurm_cgroup_allowedramspace: "100.1" # At which % of requested memory should the process get killed?
 slurm_cgroup_constrain_swap: "no"
 slurm_cgroup_taskaffinity: "no"
 slurm_cgroup_allowedswapspace: "120" # % of memory allocation that can be phys mem+swap
-slurm_cgroup_constrain_devices: "no" 
+slurm_cgroup_constrain_devices: "no"
 slurm_cgroup_min_ram: "500" # always allocate this much memory to each job
 
 # LOGGING
@@ -212,7 +212,7 @@ slurm_ExtraParamsList:
 # - TmpFs=""
 # - SchedulerAuth=""
 # - SchedulerRootFilter=""
- - DefMemPerCPU="2048"
+  - DefMemPerCPU="2048"
 # - PriorityUsageResetPeriod="14-0"
 # - HealthCheckNodeState="IDLE"
 # - Licenses="mdcs:256"
