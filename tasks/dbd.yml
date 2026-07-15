@@ -68,9 +68,11 @@
      mode: 0600
     when: slurm_manage_mysql_security|bool
 
-  - name: delete anonymous sql server user for localhost
-    mysql_user: user="" state=absent
-    when: slurm_manage_mysql_security|bool
+  - name: Delete anonymous SQL server user for localhost
+    community.mysql.mysql_user:
+      name: ""
+      state: absent
+    when: slurm_manage_mysql_security | bool
 
   - name: remove the mysql test database
     mysql_db: db=test state=absent
