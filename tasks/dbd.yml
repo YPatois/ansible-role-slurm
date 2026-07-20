@@ -49,7 +49,7 @@
   - name: Set root sql user password check mode
     mysql_user:
       name: root
-      password: "{{ DB_root_password}}"
+      password: "{{ DB_root_password }}"
       check_implicit_admin: false
       host: "{{ item }}"
     with_items:
