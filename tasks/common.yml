@@ -11,6 +11,15 @@
 #    when: ansible_distribution_major_version == "7" and slurm_repo == 'ohpc' and ansible_os_family == "RedHat"
 
 ##
+
+
+  # If slurm_major_version >=23, and slurm_select_type is set to "select/cons_res"
+  # Then change it to "select/cons_tres"
+  - name: Change slurm_select_type from select/cons_res to select/cons_tres
+    set_fact:
+      slurm_select_type: "select/cons_tres"
+    when: slurm_major_version >= 23 and slurm_select_type == "select/cons_res"
+
     # Set slurm user and group locally on every host if uid/gid given
   - name: add slurm unix group
     group: name=slurm system=no state=present gid={{ slurm_user_gid|default(slurm_user_uid) }}                                                                                 
