@@ -107,7 +107,9 @@ AccountingStorageHost={{ slurm_accounting_storage_host }}
 {% else %}
 AccountingStoreFlags={{ slurm_accounting_store_flags }}
 {% endif %}
+{% if slurm_accounting_storage_user is defined %}
 AccountingStorageUser={{ slurm_accounting_storage_user }}
+{% endif %}
 AccountingStorageEnforce={{ slurm_accounting_storage_enforce }}
 {% if slurm_accounting_storage_tres is defined %}
 AccountingStorageTRES={{ slurm_accounting_storage_tres }}

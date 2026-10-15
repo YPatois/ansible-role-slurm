@@ -1,6 +1,12 @@
 ---
 # tasks file for ansible-role-slurm
 
+# Undef slurm_accounting_storage_user if slurm_major_version > 24
+- name: Undef slurm_accounting_storage_user if slurm_major_version > 24
+  ansible.builtin.set_fact:
+      slurm_accounting_storage_user: "{{ undef() }}"
+  when: slurm_major_version | int > 24
+
 - include_tasks: redhat.yml
   when: ansible_os_family == "RedHat"
 
